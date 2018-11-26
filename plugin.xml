@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="cordova-plugin-ptr-notification-service"
+    version="1.0.0">
+
+    <engines>
+        <engine name="cordova" version=">=4.0.0" />
+    </engines>
+
+    <name>ptr-notification-service</name>
+
+    <description>ptr notification service plugin for Cordova/PhoneGap</description>
+
+    <author>chris</author>
+
+    <keywords></keywords>
+
+    <license>MIT</license>
+
+    <js-module src="www/ptr-notification-service.js" name="ptrNotificationService">
+        <clobbers target="cordova.plugins.ptr.notification.service" />
+    </js-module>
+
+    <!-- Android -->
+    <platform name="android">
+        <source-file src="src/android/NotificationServicePlugin.java" target-dir="src/tw/gov/tra/twtraffic/plugin" />
+        <source-file src="src/android/NotificationService.java" target-dir="src/tw/gov/tra/twtraffic/plugin" />
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="ptrNotificationService">
+                <param name="android-package" value="tw.gov.tra.twtraffic.plugin.NotificationServicePlugin" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <service android:name="tw.gov.tra.twtraffic.plugin.NotificationService" android:enabled="true" android:exported="true" />
+        </config-file>
+    </platform>
+</plugin>
