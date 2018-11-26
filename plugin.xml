@@ -28,7 +28,7 @@
         <source-file src="src/android/NotificationService.java" target-dir="src/tw/gov/tra/twtraffic/plugin" />
 
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="ptrNotificationService">
+            <feature name="PtrNotificationService">
                 <param name="android-package" value="tw.gov.tra.twtraffic.plugin.NotificationServicePlugin" />
             </feature>
         </config-file>

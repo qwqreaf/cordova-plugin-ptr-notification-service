@@ -1,5 +1,6 @@
 package tw.gov.tra.twtraffic.plugin;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -8,13 +9,14 @@ import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import tw.gov.tra.twtraffic.MainActivity;
 
 /**
  * Created by ChrisTsai on 2018/11/26.
  */
 
 public class NotificationServicePlugin extends CordovaPlugin {
+
+    private final static String TAG = "NotificationService";
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -23,7 +25,9 @@ public class NotificationServicePlugin extends CordovaPlugin {
                 case "start":
                     String title = "null".equals(args.getString(0)) ? null : args.getString(0);
                     String message = "null".equals(args.getString(1)) ? null : args.getString(1);
-                    startService(title, message);
+                    String bigText = "null".equals(args.getString(2)) ? null : args.getString(2);
+                    String openUrl = "null".equals(args.getString(3)) ? null : args.getString(3);
+                    startService(title, message, bigText, openUrl);
                     break;
 
                 case "stop":
@@ -39,13 +43,22 @@ public class NotificationServicePlugin extends CordovaPlugin {
     }
 
 
-    private void startService(String title, String message) {
-        Intent intent = new Intent(cordova.getContext(), NotificationService.class);
-        intent.setAction(NotificationService.ACTION_START);
-        Bundle extras = intent.getExtras();
-        extras.putString("title", title);
-        extras.putString("message", message);
-        cordova.getContext().startService(intent);
+    private void startService(String title, String message, String bigText, String openUrl) {
+        Context context = cordova.getContext();
+        try {
+            Intent intent = new Intent(context, NotificationService.class);
+            intent.setAction(NotificationService.ACTION_START);
+            Bundle extras = new Bundle();
+            extras.putString("title", title);
+            extras.putString("message", message);
+            extras.putString("bigText", bigText);
+            extras.putString("openUrl", openUrl);
+            intent.putExtras(extras);
+            context.startService(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+//            fireEvent(Event.FAILURE, String.format("'%s'", e.getMessage()));
+        }
     }
 
     private void stopService() {
