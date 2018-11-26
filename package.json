@@ -1,0 +1,31 @@
+{
+  "name": "cordova-plugin-ptr-notification-service",
+  "version": "1.0.0",
+  "description": "ptr notification service plugin for Cordova/PhoneGap",
+  "cordova": {
+    "id": "cordova-plugin-ptr-notification-service",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qwqreaf/cordova-plugin-ptr-notification-service.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=4.0.0"
+    }
+  ],
+  "author": "chris",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/qwqreaf/cordova-plugin-ptr-notification-service/issues"
+  },
+  "homepage": "https://github.com/qwqreaf/cordova-plugin-ptr-notification-service#readme"
+}
