@@ -4,6 +4,7 @@
 
     <engines>
         <engine name="cordova" version=">=4.0.0" />
+        <engine name="cordova-android" version=">=6.3.0"/>
     </engines>
 
     <name>ptr-notification-service</name>
@@ -17,13 +18,12 @@
     <license>MIT</license>
 
 
-
+    <js-module src="www/ptr-notification-service.js" name="ptrNotificationService">
+        <clobbers target="cordova.plugins.ptr.notification.service" />
+    </js-module>
+    
     <!-- Android -->
     <platform name="android">
-        <js-module src="www/ptr-notification-service.js" name="ptrNotificationService">
-            <clobbers target="cordova.plugins.ptr.notification.service" />
-        </js-module>
-        
         <source-file src="src/android/NotificationServicePlugin.java" target-dir="src/tw/gov/tra/twtraffic/plugin" />
         <source-file src="src/android/NotificationService.java" target-dir="src/tw/gov/tra/twtraffic/plugin" />
 
