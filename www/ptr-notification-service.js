@@ -1,4 +1,3 @@
-cordova.define("cordova-plugin-ptr-notification-service.ptrNotificationService", function(require, exports, module) {
 var exec = require('cordova/exec');
 
 var ptrNotificationService = {
@@ -11,4 +10,3 @@ var ptrNotificationService = {
 };
 
 module.exports = ptrNotificationService;
-});
